@@ -1,0 +1,23 @@
+<h1>All our Flats</h1>
+
+<p>All <%= Flat.all.count %> flats</p>
+<div class = "d-flex justify-content-between">
+  <% @flats.each do |flat| %>
+
+  <div class="card rounded shadow-sm " style="width: 18rem;">
+    <img src="https://source.unsplash.com/random/440x220" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= flat.name%></h5>
+      <p class="card-text"><%= flat.description%></p>
+      <p class="card-text"><%= flat.address%></p>
+    </div>
+    <div class="card-body-liens ">
+      <div class="liens d-flex justify-content-center">
+      <p class="info m-2"><%= link_to 'More info', flat_path(flat) %></p>
+      <p class="edit m-2"><%= link_to 'Edit', edit_flat_path(flat) %></p>
+      <p class="remove m-2"><%= link_to 'Remove', flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
